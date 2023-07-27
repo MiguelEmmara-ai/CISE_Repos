@@ -1,0 +1,27 @@
+# .gitlab-ci.yml
+
+stages:
+  - build
+  - test
+  - deploy
+
+# Define job to install dependencies
+install_dependencies:
+  stage: build
+  image: node:14 # Use an image with Node.js pre-installed
+  script:
+    - npm install
+
+# Define job to build the React project
+build_project:
+  stage: build
+  image: node:14
+  script:
+    - npm run build # Assuming you have a build script in your package.json
+
+# Define job to run tests
+run_tests:
+  stage: test
+  image: node:14
+  script:
+    - npm test # Assuming you have test scripts in your package.json
