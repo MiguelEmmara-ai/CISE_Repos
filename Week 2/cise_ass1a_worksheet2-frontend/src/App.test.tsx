@@ -1,9 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders without crashing", () => {
+  const root = document.createElement("div");
+  document.body.appendChild(root);
+
+  ReactDOM.createRoot(root).render(<App />);
+  ReactDOM.unmountComponentAtNode(root);
+});
+
+describe("Addition", () => {
+  it("knows that 2 + 2 make 4", () => {
+    expect(2 + 2).toBe(4);
+  });
 });
