@@ -22,11 +22,11 @@ jobs:
           node-version: 14
 
       - name: Install Backend Dependencies
-        working-directory: CISE_Repos/Week\ 3/MERN_Book_App_api
+        working-directory: Week\ 3/MERN_Book_App_api
         run: npm install
 
       - name: Run Backend Tests
-        working-directory: CISE_Repos/Week\ 3/MERN_Book_App_api
+        working-directory: Week\ 3/MERN_Book_App_api
         run: npm test
 
   frontend:
@@ -42,13 +42,13 @@ jobs:
           node-version: 14
 
       - name: Install Frontend Dependencies
-        working-directory: CISE_Repos/Week\ 3/mern_book_app_client
+        working-directory: Week\ 3/mern_book_app_client
         run: npm install
 
       - name: Build Frontend
-        working-directory: CISE_Repos/Week\ 3/mern_book_app_client
+        working-directory: Week\ 3/mern_book_app_client
         run: npm run build
 
       - name: Run Frontend Tests
-        working-directory: CISE_Repos/Week\ 3/mern_book_app_client
+        working-directory: Week\ 3/mern_book_app_client
         run: npm test
