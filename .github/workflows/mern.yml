@@ -1,4 +1,4 @@
-name: MERN Stack CI
+name: MERN Stack CI Test
 
 on:
   push:
