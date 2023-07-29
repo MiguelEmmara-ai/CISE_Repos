@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: "Week 3/MERN_Book_App/package-lock.json"
 
       - name: Install Dependencies (MERN_Book_App_api)
         run: npm ci
