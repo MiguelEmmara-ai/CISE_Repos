@@ -15,7 +15,6 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - name: Checkout Repository
@@ -27,11 +26,27 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
-      - name: Install Dependencies
+      - name: Install Dependencies (MERN_Book_App_api)
         run: npm ci
+        working-directory: CISE_Repos/Week3/MERN_Book_App_api
 
-      - name: Build
+      - name: Build (MERN_Book_App_api)
         run: npm run build --if-present
+        working-directory: CISE_Repos/Week3/MERN_Book_App_api
 
-      - name: Run The Test
+      - name: Run The Test (MERN_Book_App_api)
         run: npm test
+        working-directory: CISE_Repos/Week3/MERN_Book_App_api
+
+      # Steps for mern_book_app_client
+      - name: Install Dependencies (mern_book_app_client)
+        run: npm ci
+        working-directory: CISE_Repos/Week3/mern_book_app_client
+
+      - name: Build (mern_book_app_client)
+        run: npm run build --if-present
+        working-directory: CISE_Repos/Week3/mern_book_app_client
+
+      - name: Run The Test (mern_book_app_client)
+        run: npm test
+        working-directory: CISE_Repos/Week3/mern_book_app_client
