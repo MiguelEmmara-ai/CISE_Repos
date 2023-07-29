@@ -25,29 +25,29 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          cache-dependency-path: "Week 3/MERN_Book_App/package-lock.json"
+          cache-dependency-path: "Week 3/MERN_Book_App_api/package-lock.json"
 
       - name: Install Dependencies (MERN_Book_App_api)
         run: npm ci
-        working-directory: CISE_Repos/Week3/MERN_Book_App_api
+        working-directory: "CISE_Repos/Week 3/MERN_Book_App_api"
 
       - name: Build (MERN_Book_App_api)
         run: npm run build --if-present
-        working-directory: CISE_Repos/Week3/MERN_Book_App_api
+        working-directory: "CISE_Repos/Week 3/MERN_Book_App_api"
 
       - name: Run The Test (MERN_Book_App_api)
         run: npm test
-        working-directory: CISE_Repos/Week3/MERN_Book_App_api
+        working-directory: "CISE_Repos/Week 3/MERN_Book_App_api"
 
       # Steps for mern_book_app_client
       - name: Install Dependencies (mern_book_app_client)
         run: npm ci
-        working-directory: CISE_Repos/Week3/mern_book_app_client
+        working-directory: "CISE_Repos/Week 3/mern_book_app_client"
 
       - name: Build (mern_book_app_client)
         run: npm run build --if-present
-        working-directory: CISE_Repos/Week3/mern_book_app_client
+        working-directory: "CISE_Repos/Week 3/mern_book_app_client"
 
       - name: Run The Test (mern_book_app_client)
         run: npm test
-        working-directory: CISE_Repos/Week3/mern_book_app_client
+        working-directory: "CISE_Repos/Week 3/mern_book_app_client"
