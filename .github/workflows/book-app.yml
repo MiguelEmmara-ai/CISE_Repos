@@ -1,56 +1,51 @@
-name: BOOK_APP_CI_ACTION
+name: MERN Stack CI Test
 
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - main
 
 jobs:
-  build:
+  backend:
+    name: Build and Test Backend
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Debug Current Directory
-        run: pwd
-
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-          cache-dependency-path: "Week 3/MERN_Book_App_api/package-lock.json"
+          node-version: 14
 
-      - name: Install Dependencies (MERN_Book_App_api)
-        run: npm ci
-        working-directory: "CISE_Repos/Week 3/MERN_Book_App_api"
+      - name: Install Backend Dependencies
+        working-directory: CISE_Repos/Week\ 3/MERN_Book_App_api
+        run: npm install
 
-      - name: Build (MERN_Book_App_api)
-        run: npm run build --if-present
-        working-directory: "CISE_Repos/Week 3/MERN_Book_App_api"
-
-      - name: Run The Test (MERN_Book_App_api)
+      - name: Run Backend Tests
+        working-directory: CISE_Repos/Week\ 3/MERN_Book_App_api
         run: npm test
-        working-directory: "CISE_Repos/Week 3/MERN_Book_App_api"
 
-      # Steps for mern_book_app_client
-      - name: Install Dependencies (mern_book_app_client)
-        run: npm ci
-        working-directory: "CISE_Repos/Week 3/mern_book_app_client"
+  frontend:
+    name: Build and Test Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Build (mern_book_app_client)
-        run: npm run build --if-present
-        working-directory: "CISE_Repos/Week 3/mern_book_app_client"
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
 
-      - name: Run The Test (mern_book_app_client)
+      - name: Install Frontend Dependencies
+        working-directory: CISE_Repos/Week\ 3/mern_book_app_client
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: CISE_Repos/Week\ 3/mern_book_app_client
+        run: npm run build
+
+      - name: Run Frontend Tests
+        working-directory: CISE_Repos/Week\ 3/mern_book_app_client
         run: npm test
-        working-directory: "CISE_Repos/Week 3/mern_book_app_client"
