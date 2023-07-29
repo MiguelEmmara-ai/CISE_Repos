@@ -24,7 +24,7 @@ const CreateBook = (props) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5123/api/books", book)
+      .post("https://mern-book-app-api.vercel.app/api/books", book)
       .then((res) => {
         setBook({
           title: "",
@@ -50,7 +50,7 @@ const CreateBook = (props) => {
           <div className='col-md-8 m-auto'>
             <br />
             <Link to='/' className='btn btn-outline-warning float-left'>
-              Show BooK List
+              Show Book List
             </Link>
           </div>
           <div className='col-md-8 m-auto'>

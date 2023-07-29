@@ -18,7 +18,7 @@ function UpdateBookInfo(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5123/api/books/${id}`)
+      .get(`https://mern-book-app-api.vercel.app/api/books/${id}`)
       .then((res) => {
         setBook({
           title: res.data.title,
@@ -51,7 +51,7 @@ function UpdateBookInfo(props) {
     };
 
     axios
-      .put(`http://localhost:5123/api/books/${id}`, data)
+      .put(`https://mern-book-app-api.vercel.app/api/books/${id}`, data)
       .then((res) => {
         navigate(`/show-book/${id}`);
       })
@@ -67,7 +67,7 @@ function UpdateBookInfo(props) {
           <div className='col-md-8 m-auto'>
             <br />
             <Link to='/' className='btn btn-outline-warning float-left'>
-              Show BooK List
+              Show Book List
             </Link>
           </div>
           <div className='col-md-8 m-auto'>
