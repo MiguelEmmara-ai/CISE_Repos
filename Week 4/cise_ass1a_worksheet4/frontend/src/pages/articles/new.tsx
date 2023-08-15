@@ -1,35 +1,47 @@
-import { FormEvent, useState } from "react";
-import formStyles from "../../../styles/Form.module.scss";
+import { FormEvent, useState } from 'react';
+import formStyles from '../../../styles/Form.module.scss';
 
 const NewDiscussion = () => {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const [authors, setAuthors] = useState<string[]>([]);
-  const [source, setSource] = useState("");
+  const [source, setSource] = useState('');
   const [pubYear, setPubYear] = useState<number>(0);
-  const [doi, setDoi] = useState("");
-  const [summary, setSummary] = useState("");
-  const [linkedDiscussion, setLinkedDiscussion] = useState("");
+  const [doi, setDoi] = useState('');
+  const [summary, setSummary] = useState('');
+  const [linkedDiscussion, setLinkedDiscussion] = useState('');
 
   const submitNewArticle = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(
-      JSON.stringify({
-        title,
-        authors,
-        source,
-        publication_year: pubYear,
-        doi,
-        summary,
-        linked_discussion: linkedDiscussion,
-      })
-    );
+    // Log and Give Alert
+    const theNewArticle: string = JSON.stringify({
+      title,
+      authors,
+      source,
+      publication_year: pubYear,
+      doi,
+      summary,
+      linked_discussion: linkedDiscussion,
+    });
+
+    const formattedArticle = `
+      Title: ${title}
+      Authors: ${authors}
+      Source: ${source}
+      Publication Year: ${pubYear}
+      DOI: ${doi}
+      Summary: ${summary}
+      Linked Discussion: ${linkedDiscussion}
+    `;
+
+    console.log(theNewArticle);
+    alert(formattedArticle);
   };
 
   // Some helper methods for the authors array
 
   const addAuthor = () => {
-    setAuthors(authors.concat([""]));
+    setAuthors(authors.concat(['']));
   };
 
   const removeAuthor = (index: number) => {
@@ -76,7 +88,7 @@ const NewDiscussion = () => {
               <button
                 onClick={() => removeAuthor(index)}
                 className={formStyles.buttonItem}
-                style={{ marginLeft: "3rem" }}
+                style={{ marginLeft: '3rem' }}
                 type='button'
               >
                 -
@@ -87,7 +99,7 @@ const NewDiscussion = () => {
         <button
           onClick={() => addAuthor()}
           className={formStyles.buttonItem}
-          style={{ marginLeft: "auto" }}
+          style={{ marginLeft: 'auto' }}
           type='button'
         >
           +
@@ -114,7 +126,7 @@ const NewDiscussion = () => {
           value={pubYear}
           onChange={(event) => {
             const val = event.target.value;
-            if (val === "") {
+            if (val === '') {
               setPubYear(0);
             } else {
               setPubYear(parseInt(val));
